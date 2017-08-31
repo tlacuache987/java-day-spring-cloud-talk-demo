@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: user-microservice
+  profiles:
+    active: default
+  cloud:
+    config:
+      uri: http://localhost:9000
