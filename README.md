@@ -45,7 +45,7 @@ $ mvn spring-boot:run
 This command will launch the Spring Cloud Config Server, open following links.
 
 http://localhost:9000/user-microservice/default/master (this link should respond something similar like)
-
+```
 {
 "name": "user-microservice",
 "profiles": [
@@ -63,8 +63,29 @@ http://localhost:9000/user-microservice/default/master (this link should respond
 }
 ]
 }
+```
 
-http://localhost:9000/salute-microservice/default/master
+http://localhost:9000/salute-microservice/default/master (this link should respond something similar like)
+
+```
+{
+"name": "salute-microservice",
+"profiles": [
+"default"
+],
+"label": "master",
+"version": null,
+"state": null,
+"propertySources": [
+{
+"name": "file:/Users/xvhx/ws-java-day/spring-cloud-config-repo/salute-microservice.properties",
+"source": {
+"salute": "Hello I''m the proxy user microservice !"
+}
+}
+]
+}
+```
 
 
 
