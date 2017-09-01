@@ -87,6 +87,26 @@ http://localhost:9000/salute-microservice/default/master (this link should respo
 }
 ```
 
+5. Launch 5 instances of user-microservice
+
+Open a new terminal or cmd and enter into /user-microservice folder and run following command:
+
+xvhx@:~/java-day-spring-cloud-talk-demo/user-microservice\
+$ mvn spring-boot:run -Dspring.profiles.active=dev -Dserver.port=9101
+
+Open http://localhost:9101/user or http://localhost:9101/user.json or http://localhost:9101/user.xml in browser
+
+This REST Endpoint should return something similar like:
+
+```
+{
+"name": "Ivan García",
+"message": "Hola Mundo Java Day! (dev), response by: 9101"
+}
+```
+
+Look that the message property sends between round brackets the name of the active profile also, sends the port number of this microservice
+
 
 
 
