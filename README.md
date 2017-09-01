@@ -105,8 +105,31 @@ This REST Endpoint should return something similar like:
 }
 ```
 
-Look that the message property sends between round brackets the name of the active profile also, sends the port number of this microservice
+Look that the message property sends between round brackets the name of the active profile also, 
+sends the port number of this microservice. This properties are set by the -Dspring.profiles.active and -Dserver.port
+arguments given by the mvn spring-boot:run command.
 
+Launch 4 more instances of this microservice, changing the active profile and port numbers.
 
+Available profiles for user-microservice: default, prod and dev.
+You can choose whatever unused port, I suggest using 9101, 9102, 9103, 9104 and 9105 just for keep things clear.
+
+so, open new terminal windows and run:
+
+xvhx@:~/java-day-spring-cloud-talk-demo/user-microservice\
+$ mvn spring-boot:run -Dspring.profiles.active=dev -Dserver.port=9102
+
+xvhx@:~/java-day-spring-cloud-talk-demo/user-microservice\
+$ mvn spring-boot:run -Dspring.profiles.active=dev -Dserver.port=9103
+
+xvhx@:~/java-day-spring-cloud-talk-demo/user-microservice\
+$ mvn spring-boot:run -Dspring.profiles.active=dev -Dserver.port=9104
+
+and
+
+xvhx@:~/java-day-spring-cloud-talk-demo/user-microservice\
+$ mvn spring-boot:run -Dspring.profiles.active=dev -Dserver.port=9105
+
+Give some time to each microservice to get registered into Eureka, and review in each eureka-host1 and eureka-host2 if they are registered.
 
 
