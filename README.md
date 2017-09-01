@@ -8,7 +8,9 @@ How to compile.
 1. clone repository.
 
 2. Register in hosts file:
+
 127.0.0.1 eureka-host1
+
 127.0.0.1 eureka-host2
 
 this is for properly usage of Spring Cloud Config Server
