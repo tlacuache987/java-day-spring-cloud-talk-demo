@@ -132,4 +132,51 @@ $ mvn spring-boot:run -Dspring.profiles.active=dev -Dserver.port=9105
 
 Give some time to each microservice to get registered into Eureka, and review in each eureka-host1 and eureka-host2 if they are registered.
 
+6. Launch 1 instance of salute-microservice
 
+Using a terminal or cmd, enter into /salute-microservice folder and execute following command:
+
+xvhx@:~/java-day-spring-cloud-talk-demo/salute-microservice\
+$ mvn spring-boot:run
+
+This microservice will be deployed using 9201 port by default.
+
+Open in browser http://localhost:9201/salute, http://localhost:9201/salute.json or http://localhost:9201/salute.xml
+
+This REST Endpoint should respond something similar like:
+
+```
+{
+"salute": "Hello I''m the proxy user microservice !",
+"user": {
+"name": "Ivan García",
+"message": "Hola Mundo Java Day! (dev), response by: 9101"
+}
+}
+
+```
+But the message property of the user object should vary on the profile and on port number, this is because 
+salute-microservice (internally) calls to one user-microservice to get the User data. Each deployed user-microservice 
+sends different profile and different port number, here is the example using Feing to remote calls using load balancer.
+
+
+If you take down all user-microservice microservices (using ctrl+c on each terminal) and then you try to reach http://localhost:9201/salute.json 
+again you will see the following response:
+
+```
+{
+"salute": "Hello I''m the proxy user microservice !",
+"user": {
+"name": "Dummy User",
+"message": "returned by hystrix circuit breaker"
+}
+}
+```
+
+Here is the example using Hystrix for failure tolerance. The circuit breaker opens if salute-microservice can't reach any
+user-microservice. You can re-launch whatever number of user-microservice microservices again, let them register into eureka 
+and then try to reach http://localhost:9201/salute.json again, the salute-microservice will not reach user-microservice 
+as soon this will be deployed because hystrix and circuit-breaker implements the fail-fast principle so, it will take 
+some time to salute-microservice for close the circuit-breaker and again start reaching user-microservice.
+
+Enjoy !
