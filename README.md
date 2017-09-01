@@ -16,7 +16,7 @@ this is for properly usage of Spring Cloud Config Server
 3. Launch two instances of Eureka Server, enter to /spring-cloud-netflix-eureka folder and execute following comands:
 (In two separated terminal or cmd)
 
-xvhx@:~/java-day-spring-cloud-talk-demo/spring-cloud-netflix-eureka\ 
+xvhx@:~/java-day-spring-cloud-talk-demo/spring-cloud-netflix-eureka\
 $ mvn spring-boot:run -Dspring.profiles.active=eureka-host1
 
 and
